@@ -1,3 +1,6 @@
+let computer = 0;
+let player = 0;
+
 let getComputerChoice = () => {
     let values = ["Rock", "Paper", "Scissors"];
     let i = Math.floor(Math.random() * 3);
@@ -5,45 +8,75 @@ let getComputerChoice = () => {
     return text;
 }
 
+let ComputerWins = () => {
+    computer = computer + 1;
+}
+
+let PlayerWins = () => {
+    player = player + 1;
+
+}
+
 let playRound = (playerSelection, computerSelection) => {
 
     if (playerSelection === computerSelection) {
-        console.log("No winners!")
+
+        return "No winners! Game Draw ";
     }
     else if (playerSelection === "Rock" && computerSelection === "Paper") {
-        console.log("Computer wins!");
+        ComputerWins();
+        return "Computer wins! Paper Beats the Rock";
     }
     else if (playerSelection === "Rock" && computerSelection === "Scissors") {
-        console.log("User wins!");
+        PlayerWins();
+        return "User wins! Rock Beats the Scissors";
     }
     else if (playerSelection === "Paper" && computerSelection === "Rock") {
-        console.log("User wins!");
+        PlayerWins();
+        return "User wins! Paper Beats the Rock";
     }
     else if (playerSelection === "Paper" && computerSelection === "Scissors") {
-        console.log("User wins!");
+        ComputerWins();
+        return "Computer wins! Scissors beats the paper";
     }
     else if (playerSelection === "Scissors" && computerSelection === "Rock") {
-        console.log("Computer wins!");
+        ComputerWins();
+        return "Computer wins! Rock beats the Scissors";
     }
     else if (playerSelection === "Scissors" && computerSelection === "Paper") {
-        console.log("Computer wins!");
+        PlayerWins();
+        return "User wins! Scissors beats the paper";
     } else {
-        console.log("Error");
+        return "There is an Error!";
     }
-
 }
 
-const playerSelection = prompt("Enter Rock, Paper or Scissors");
-const computerSelection = getComputerChoice();
-
-//console.log(playRound(playerSelection, computerSelection));
 
 
 let game = () => {
-    for (let i = 1; i <= 5; i++) {
-        console.log(playRound(playerSelection, computerSelection));
+    let i = 1;
+    for (i; i <= 5; i++) {
+        console.log("Round " + i);
+        const playerSelection = prompt("Enter Rock, Paper or Scissors");
+        console.log(playRound(playerSelection, getComputerChoice()));
+        console.log("Computer : " + computer + " , Player : " + player);
     }
+    let val = i - 1;
+
+    if (computer === player) {
+        console.log("Finally, Match is Draw.");
+    }
+    else if (computer > player) {
+        console.log("Finally, COMPUTER WINS.")
+    }
+    else if (computer < player) {
+        console.log("Finally, PLAYER WINS.")
+    }
+
 }
+
+game();
+
 
 
 
