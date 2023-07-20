@@ -75,8 +75,42 @@ let game = () => {
 
 }
 
-game();
+let news = (playersText) => {
+    let item = document.querySelector('#score');
+    let info = document.querySelector('#moreInfo');
 
+    let text = (playRound(playersText, getComputerChoice()));
+
+    if (item) {
+        item.textContent = computer + " : " + player;
+    }
+    if (info) {
+        info.textContent = text;
+    }
+}
+
+
+
+let rock = document.querySelector('#card1Rock');
+rock.addEventListener('click', () => {
+    const playerSelection = 'Rock';
+    news(playerSelection);
+
+
+})
+
+
+let paper = document.querySelector('#çard2Paper');
+paper.addEventListener('click', () => {
+    const playerSelection = 'Paper';
+    news(playerSelection);
+})
+
+let scissors = document.querySelector('#card3Scissors');
+scissors.addEventListener('click', () => {
+    const playerSelection = 'Scissors';
+    news(playerSelection);
+})
 
 
 
